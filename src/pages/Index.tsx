@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import ReposSection from "@/components/ReposSection";
+import ContactSection from "@/components/ContactSection";
 import { Github } from "lucide-react";
 
 const Index = () => {
