@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import ReposSection from "@/components/ReposSection";
+import ContactSection from "@/components/ContactSection";
 import { Github } from "lucide-react";
 
 const Index = () => {
@@ -16,6 +17,7 @@ const Index = () => {
       <div className="relative z-10">
         <HeroSection />
         <ReposSection />
+        <ContactSection />
 
         <footer className="py-10 text-center border-t border-border">
           <p className="text-muted-foreground text-sm font-mono flex items-center justify-center gap-2">
