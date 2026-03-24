@@ -11,7 +11,7 @@ const ReposSection = () => {
         <div className="flex items-center gap-3 mb-10">
           <span className="font-mono text-primary text-sm">{">"}</span>
           <h2 className="text-2xl font-heading font-bold text-foreground">
-            Featured Repositories
+            New Repositories
           </h2>
           <div className="flex-1 h-px bg-border ml-4" />
         </div>
