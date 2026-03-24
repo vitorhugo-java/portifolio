@@ -72,6 +72,9 @@ export const useGitHubUser = () =>
 export const useGitHubRepos = () =>
   useQuery({ queryKey: ["github-repos"], queryFn: fetchRepos, staleTime: 1000 * 60 * 10 });
 
+export const useGitHubEvents = () =>
+  useQuery({ queryKey: ["github-events"], queryFn: fetchEvents, staleTime: 1000 * 60 * 5 });
+
 // Language color mapping
 export const LANGUAGE_COLORS: Record<string, string> = {
   TypeScript: "#3178c6",
