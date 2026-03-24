@@ -1,4 +1,5 @@
 import HeroSection from "@/components/HeroSection";
+import PinnedReposSection from "@/components/PinnedReposSection";
 import ReposSection from "@/components/ReposSection";
 import ActivitySection from "@/components/ActivitySection";
 import ContactSection from "@/components/ContactSection";
@@ -17,6 +18,7 @@ const Index = () => {
 
       <div className="relative z-10">
         <HeroSection />
+        <PinnedReposSection />
         <ReposSection />
         <ActivitySection />
         <ContactSection />
