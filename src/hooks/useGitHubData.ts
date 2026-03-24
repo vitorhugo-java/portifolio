@@ -37,14 +37,33 @@ const fetchUser = async (): Promise<GitHubUser> => {
 
 const fetchRepos = async (): Promise<GitHubRepo[]> => {
   const res = await fetch(
-    `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100&type=owner`
+    `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=created&direction=desc&per_page=6&type=owner`
   );
   if (!res.ok) throw new Error("Failed to fetch repos");
-  const repos: GitHubRepo[] = await res.json();
-  // Sort by stars (proxy for pinned) and return top 6
-  return repos
-    .sort((a, b) => b.stargazers_count - a.stargazers_count)
-    .slice(0, 6);
+  return res.json();
+};
+
+export interface GitHubEvent {
+  id: string;
+  type: string;
+  repo: { name: string; url: string };
+  created_at: string;
+  payload: {
+    action?: string;
+    ref?: string;
+    ref_type?: string;
+    commits?: { message: string }[];
+    pull_request?: { title: string };
+    issue?: { title: string };
+  };
+}
+
+const fetchEvents = async (): Promise<GitHubEvent[]> => {
+  const res = await fetch(
+    `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=10`
+  );
+  if (!res.ok) throw new Error("Failed to fetch events");
+  return res.json();
 };
 
 export const useGitHubUser = () =>

@@ -1,13 +1,4 @@
-import { Mail, Linkedin, Github, Twitter, Send } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
-import { z } from "zod";
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
-  message: z.string().trim().min(1, "Message is required").max(1000),
-});
+import { Mail, Linkedin, Github, Twitter } from "lucide-react";
 
 const SOCIAL_LINKS = [
   { icon: Github, href: "https://github.com/vitorhugo-java", label: "GitHub" },

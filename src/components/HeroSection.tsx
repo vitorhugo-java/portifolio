@@ -1,5 +1,5 @@
 import { useGitHubUser } from "@/hooks/useGitHubData";
-import { MapPin, ExternalLink, Users, BookOpen } from "lucide-react";
+import { MapPin, ExternalLink, BookOpen } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 
 const HeroSection = () => {
@@ -53,9 +53,6 @@ const HeroSection = () => {
             )}
             <span className="flex items-center gap-1.5 text-muted-foreground text-sm">
               <BookOpen className="w-4 h-4" /> {user.public_repos} repos
-            </span>
-            <span className="flex items-center gap-1.5 text-muted-foreground text-sm">
-              <Users className="w-4 h-4" /> {user.followers} followers
             </span>
           </div>
 
