@@ -29,9 +29,28 @@ export interface GitHubRepo {
   homepage: string | null;
 }
 
+const checkGitHubResponse = (res: Response, label: string) => {
+  if (!res.ok) {
+    if (res.status === 403) {
+      const remaining = res.headers.get("X-RateLimit-Remaining");
+      if (remaining === "0") {
+        const reset = res.headers.get("X-RateLimit-Reset");
+        const resetTime = reset
+          ? new Date(parseInt(reset, 10) * 1000).toLocaleTimeString()
+          : "soon";
+        throw new Error(
+          `GitHub API rate limit exceeded. Limit resets at ${resetTime}. Please try again later.`
+        );
+      }
+      throw new Error(`GitHub API returned 403 Forbidden for ${label}. This may be due to authentication requirements or access restrictions.`);
+    }
+    throw new Error(`Failed to fetch ${label} (${res.status})`);
+  }
+};
+
 const fetchUser = async (): Promise<GitHubUser> => {
   const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
-  if (!res.ok) throw new Error("Failed to fetch user");
+  checkGitHubResponse(res, "user");
   return res.json();
 };
 
@@ -39,7 +58,7 @@ const fetchRepos = async (): Promise<GitHubRepo[]> => {
   const res = await fetch(
     `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=created&direction=desc&per_page=6&type=owner`
   );
-  if (!res.ok) throw new Error("Failed to fetch repos");
+  checkGitHubResponse(res, "repos");
   return res.json();
 };
 
@@ -62,7 +81,7 @@ const fetchEvents = async (): Promise<GitHubEvent[]> => {
   const res = await fetch(
     `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=10`
   );
-  if (!res.ok) throw new Error("Failed to fetch events");
+  checkGitHubResponse(res, "events");
   return res.json();
 };
 

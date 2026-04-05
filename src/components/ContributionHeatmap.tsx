@@ -21,7 +21,22 @@ const fetchContributions = async (): Promise<DayData[]> => {
     const res = await fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=100&page=${page}`
     );
-    if (!res.ok) break;
+    if (!res.ok) {
+      if (res.status === 403) {
+        const remaining = res.headers.get("X-RateLimit-Remaining");
+        if (remaining === "0") {
+          const reset = res.headers.get("X-RateLimit-Reset");
+          const resetTime = reset
+            ? new Date(parseInt(reset, 10) * 1000).toLocaleTimeString()
+            : "soon";
+          throw new Error(
+            `GitHub API rate limit exceeded. Limit resets at ${resetTime}.`
+          );
+        }
+        throw new Error("GitHub API returned 403 Forbidden for contributions. This may be due to authentication requirements or access restrictions.");
+      }
+      break;
+    }
     const data = await res.json();
     if (data.length === 0) break;
     allEvents.push(...data);
