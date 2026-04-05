@@ -1,16 +1,16 @@
-name: Update SEO Files (robots.txt & sitemap.xml)
+name: Update GitHub Data Cache
 
 on:
   schedule:
-    # Runs every Monday at 02:00 UTC
-    - cron: "0 2 * * 1"
+    # Runs every day at 01:00 UTC
+    - cron: "0 1 * * *"
   workflow_dispatch: # Allow manual runs
 
 permissions:
   contents: write
 
 jobs:
-  update-seo:
+  update-data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main branch
@@ -23,18 +23,20 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Generate robots.txt and sitemap.xml
-        run: bun scripts/generate-sitemap.ts
+      - name: Fetch GitHub data
+        run: bun scripts/fetch-github-data.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit and push to main if files changed
+      - name: Commit updated cache to main
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/robots.txt public/sitemap.xml
+          git add src/data/github-cache.json
           if git diff --cached --quiet; then
-            echo "No changes to SEO files, skipping commit."
+            echo "No changes to data cache, skipping commit."
           else
-            git commit -m "chore: update robots.txt and sitemap.xml"
+            git commit -m "chore: update GitHub data cache"
             git push origin main
           fi
 
@@ -48,4 +50,3 @@ jobs:
             git checkout -b prod
           fi
           git push origin prod
-

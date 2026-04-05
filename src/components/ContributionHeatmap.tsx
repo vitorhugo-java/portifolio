@@ -1,70 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useContributions, DayData } from "@/hooks/useGitHubData";
 
-const GITHUB_USERNAME = "vitorhugo-java";
-const DAYS = 365;
 const CELL_SIZE = 13;
 const GAP = 3;
-
-interface DayData {
-  date: string;
-  count: number;
-  level: number; // 0-4
-}
-
-const fetchContributions = async (): Promise<DayData[]> => {
-  // Use the GitHub events API to approximate contributions
-  const allEvents: any[] = [];
-  // Fetch multiple pages to get more data
-  for (let page = 1; page <= 3; page++) {
-    const res = await fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=100&page=${page}`
-    );
-    if (!res.ok) {
-      if (res.status === 403) {
-        const remaining = res.headers.get("X-RateLimit-Remaining");
-        if (remaining === "0") {
-          const reset = res.headers.get("X-RateLimit-Reset");
-          const resetTime = reset
-            ? new Date(parseInt(reset, 10) * 1000).toLocaleTimeString()
-            : "soon";
-          throw new Error(
-            `GitHub API rate limit exceeded. Limit resets at ${resetTime}.`
-          );
-        }
-        throw new Error("GitHub API returned 403 Forbidden for contributions. This may be due to authentication requirements or access restrictions.");
-      }
-      break;
-    }
-    const data = await res.json();
-    if (data.length === 0) break;
-    allEvents.push(...data);
-  }
-
-  // Count events per day
-  const countMap: Record<string, number> = {};
-  allEvents.forEach((event: any) => {
-    const date = event.created_at.split("T")[0];
-    countMap[date] = (countMap[date] || 0) + 1;
-  });
-
-  // Build day array for the last year
-  const today = new Date();
-  const days: DayData[] = [];
-  for (let i = DAYS - 1; i >= 0; i--) {
-    const d = new Date(today);
-    d.setDate(d.getDate() - i);
-    const dateStr = d.toISOString().split("T")[0];
-    const count = countMap[dateStr] || 0;
-    days.push({
-      date: dateStr,
-      count,
-      level: count === 0 ? 0 : count <= 2 ? 1 : count <= 5 ? 2 : count <= 10 ? 3 : 4,
-    });
-  }
-  return days;
-};
 
 const LEVEL_COLORS = [
   "hsl(220 14% 14%)",       // level 0 - empty
@@ -78,11 +17,7 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const DAYS_LABELS = ["Mon", "Wed", "Fri"];
 
 const ContributionHeatmap = () => {
-  const { data: days, isLoading, error } = useQuery({
-    queryKey: ["contribution-heatmap"],
-    queryFn: fetchContributions,
-    staleTime: 1000 * 60 * 30,
-  });
+  const { data: days, isLoading, error } = useContributions();
 
   if (isLoading) {
     return (
@@ -94,7 +29,7 @@ const ContributionHeatmap = () => {
     );
   }
 
-  if (error || !days) return null;
+  if (error || !days || days.length === 0) return null;
 
   // Organize into weeks (columns)
   // First day should be a Sunday to align the grid

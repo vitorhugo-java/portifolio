@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-
-const GITHUB_USERNAME = "vitorhugo-java";
+import rawCache from "@/data/github-cache.json";
 
 export interface GitHubUser {
   login: string;
@@ -29,39 +28,6 @@ export interface GitHubRepo {
   homepage: string | null;
 }
 
-const checkGitHubResponse = (res: Response, label: string) => {
-  if (!res.ok) {
-    if (res.status === 403) {
-      const remaining = res.headers.get("X-RateLimit-Remaining");
-      if (remaining === "0") {
-        const reset = res.headers.get("X-RateLimit-Reset");
-        const resetTime = reset
-          ? new Date(parseInt(reset, 10) * 1000).toLocaleTimeString()
-          : "soon";
-        throw new Error(
-          `GitHub API rate limit exceeded. Limit resets at ${resetTime}. Please try again later.`
-        );
-      }
-      throw new Error(`GitHub API returned 403 Forbidden for ${label}. This may be due to authentication requirements or access restrictions.`);
-    }
-    throw new Error(`Failed to fetch ${label} (${res.status})`);
-  }
-};
-
-const fetchUser = async (): Promise<GitHubUser> => {
-  const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
-  checkGitHubResponse(res, "user");
-  return res.json();
-};
-
-const fetchRepos = async (): Promise<GitHubRepo[]> => {
-  const res = await fetch(
-    `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=created&direction=desc&per_page=6&type=owner`
-  );
-  checkGitHubResponse(res, "repos");
-  return res.json();
-};
-
 export interface GitHubEvent {
   id: string;
   type: string;
@@ -77,22 +43,64 @@ export interface GitHubEvent {
   };
 }
 
-const fetchEvents = async (): Promise<GitHubEvent[]> => {
-  const res = await fetch(
-    `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=10`
-  );
-  checkGitHubResponse(res, "events");
-  return res.json();
-};
+export interface DayData {
+  date: string;
+  count: number;
+  level: number;
+}
+
+interface GitHubCache {
+  user: GitHubUser;
+  repos: GitHubRepo[];
+  pinnedRepos: GitHubRepo[];
+  events: GitHubEvent[];
+  contributions: DayData[];
+  generatedAt: string;
+}
+
+// All data is served from the pre-fetched cache committed to the repository.
+// The cache is refreshed daily by the update-github-data GitHub Actions workflow.
+const githubCache = rawCache as GitHubCache;
 
 export const useGitHubUser = () =>
-  useQuery({ queryKey: ["github-user"], queryFn: fetchUser, staleTime: 1000 * 60 * 10 });
+  useQuery({
+    queryKey: ["github-user"],
+    queryFn: () => Promise.resolve(githubCache.user),
+    initialData: githubCache.user,
+    staleTime: Infinity,
+  });
 
 export const useGitHubRepos = () =>
-  useQuery({ queryKey: ["github-repos"], queryFn: fetchRepos, staleTime: 1000 * 60 * 10 });
+  useQuery({
+    queryKey: ["github-repos"],
+    queryFn: () => Promise.resolve(githubCache.repos),
+    initialData: githubCache.repos,
+    staleTime: Infinity,
+  });
 
 export const useGitHubEvents = () =>
-  useQuery({ queryKey: ["github-events"], queryFn: fetchEvents, staleTime: 1000 * 60 * 5 });
+  useQuery({
+    queryKey: ["github-events"],
+    queryFn: () => Promise.resolve(githubCache.events),
+    initialData: githubCache.events,
+    staleTime: Infinity,
+  });
+
+export const usePinnedRepos = () =>
+  useQuery({
+    queryKey: ["github-pinned-repos"],
+    queryFn: () => Promise.resolve(githubCache.pinnedRepos),
+    initialData: githubCache.pinnedRepos,
+    staleTime: Infinity,
+  });
+
+export const useContributions = () =>
+  useQuery({
+    queryKey: ["github-contributions"],
+    queryFn: () => Promise.resolve(githubCache.contributions),
+    initialData: githubCache.contributions,
+    staleTime: Infinity,
+  });
 
 // Language color mapping
 export const LANGUAGE_COLORS: Record<string, string> = {
