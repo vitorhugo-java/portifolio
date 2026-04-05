@@ -1,22 +1,32 @@
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 const GITHUB_USERNAME = "vitorhugo-java";
-const DAYS = 365;
 const CELL_SIZE = 13;
 const GAP = 3;
+const LABEL_OFFSET = 30;
 
 interface DayData {
   date: string;
   count: number;
-  level: number; // 0-4
+  level: number;
 }
 
+const LEVEL_COLORS = [
+  "hsl(220 14% 14%)",
+  "hsl(142 72% 25%)",
+  "hsl(142 72% 35%)",
+  "hsl(142 72% 45%)",
+  "hsl(142 72% 55%)",
+];
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const DAYS_LABELS = ["Mon", "Wed", "Fri"];
+
 const fetchContributions = async (): Promise<DayData[]> => {
-  // Use the GitHub events API to approximate contributions
   const allEvents: any[] = [];
-  // Fetch multiple pages to get more data
   for (let page = 1; page <= 3; page++) {
     const res = await fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=100&page=${page}`
@@ -27,17 +37,15 @@ const fetchContributions = async (): Promise<DayData[]> => {
     allEvents.push(...data);
   }
 
-  // Count events per day
   const countMap: Record<string, number> = {};
   allEvents.forEach((event: any) => {
     const date = event.created_at.split("T")[0];
     countMap[date] = (countMap[date] || 0) + 1;
   });
 
-  // Build day array for the last year
   const today = new Date();
   const days: DayData[] = [];
-  for (let i = DAYS - 1; i >= 0; i--) {
+  for (let i = 364; i >= 0; i--) {
     const d = new Date(today);
     d.setDate(d.getDate() - i);
     const dateStr = d.toISOString().split("T")[0];
@@ -51,19 +59,26 @@ const fetchContributions = async (): Promise<DayData[]> => {
   return days;
 };
 
-const LEVEL_COLORS = [
-  "hsl(220 14% 14%)",       // level 0 - empty
-  "hsl(142 72% 25%)",       // level 1
-  "hsl(142 72% 35%)",       // level 2
-  "hsl(142 72% 45%)",       // level 3
-  "hsl(142 72% 55%)",       // level 4
-];
-
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const DAYS_LABELS = ["Mon", "Wed", "Fri"];
-
 const ContributionHeatmap = () => {
-  const { data: days, isLoading, error } = useQuery({
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [maxWeeks, setMaxWeeks] = useState(52);
+
+  const updateMaxWeeks = useCallback(() => {
+    if (!containerRef.current) return;
+    const width = containerRef.current.clientWidth - 48; // padding
+    const available = width - LABEL_OFFSET - 10;
+    const weeks = Math.max(4, Math.floor(available / (CELL_SIZE + GAP)));
+    setMaxWeeks(weeks);
+  }, []);
+
+  useEffect(() => {
+    updateMaxWeeks();
+    const observer = new ResizeObserver(updateMaxWeeks);
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [updateMaxWeeks]);
+
+  const { data: allDays, isLoading, error } = useQuery({
     queryKey: ["contribution-heatmap"],
     queryFn: fetchContributions,
     staleTime: 1000 * 60 * 30,
@@ -79,23 +94,21 @@ const ContributionHeatmap = () => {
     );
   }
 
-  if (error || !days) return null;
+  if (error || !allDays) return null;
 
-  // Organize into weeks (columns)
-  // First day should be a Sunday to align the grid
+  // Trim days to fit maxWeeks
+  const maxDays = maxWeeks * 7;
+  const days = allDays.slice(-maxDays);
+
   const firstDate = new Date(days[0].date);
-  const startDow = firstDate.getDay(); // 0=Sun
-  const padded: (DayData | null)[] = [
-    ...Array(startDow).fill(null),
-    ...days,
-  ];
+  const startDow = firstDate.getDay();
+  const padded: (DayData | null)[] = [...Array(startDow).fill(null), ...days];
 
   const weeks: (DayData | null)[][] = [];
   for (let i = 0; i < padded.length; i += 7) {
     weeks.push(padded.slice(i, i + 7));
   }
 
-  // Month labels
   const monthLabels: { label: string; col: number }[] = [];
   let lastMonth = -1;
   weeks.forEach((week, wi) => {
@@ -111,7 +124,6 @@ const ContributionHeatmap = () => {
 
   const gridWidth = weeks.length * (CELL_SIZE + GAP);
   const gridHeight = 7 * (CELL_SIZE + GAP);
-  const labelOffset = 30;
 
   return (
     <section className="py-16 px-6">
@@ -124,18 +136,17 @@ const ContributionHeatmap = () => {
           <div className="flex-1 h-px bg-border ml-4" />
         </div>
 
-        <div className="rounded-lg border border-border bg-card p-6 overflow-x-auto">
+        <div ref={containerRef} className="rounded-lg border border-border bg-card p-6">
           <TooltipProvider delayDuration={100}>
             <svg
-              width={gridWidth + labelOffset + 10}
+              width={gridWidth + LABEL_OFFSET + 10}
               height={gridHeight + 30}
               className="block"
             >
-              {/* Month labels */}
               {monthLabels.map((m) => (
                 <text
                   key={`${m.label}-${m.col}`}
-                  x={labelOffset + m.col * (CELL_SIZE + GAP)}
+                  x={LABEL_OFFSET + m.col * (CELL_SIZE + GAP)}
                   y={10}
                   className="fill-muted-foreground"
                   style={{ fontSize: 10, fontFamily: "var(--font-mono)" }}
@@ -144,7 +155,6 @@ const ContributionHeatmap = () => {
                 </text>
               ))}
 
-              {/* Day labels */}
               {DAYS_LABELS.map((label, i) => (
                 <text
                   key={label}
@@ -157,11 +167,10 @@ const ContributionHeatmap = () => {
                 </text>
               ))}
 
-              {/* Cells */}
               {weeks.map((week, wi) =>
                 week.map((day, di) => {
                   if (!day) return null;
-                  const x = labelOffset + wi * (CELL_SIZE + GAP);
+                  const x = LABEL_OFFSET + wi * (CELL_SIZE + GAP);
                   const y = 20 + di * (CELL_SIZE + GAP);
                   return (
                     <Tooltip key={day.date}>
@@ -186,7 +195,6 @@ const ContributionHeatmap = () => {
             </svg>
           </TooltipProvider>
 
-          {/* Legend */}
           <div className="flex items-center justify-end gap-2 mt-4 text-xs text-muted-foreground font-mono">
             <span>Less</span>
             {LEVEL_COLORS.map((color, i) => (
