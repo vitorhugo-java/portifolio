@@ -1,6 +1,7 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { useContributions, DayData } from "@/hooks/useGitHubData";
+import { useContributions } from "@/hooks/useGitHubData";
+import { useQuery } from "@tanstack/react-query";
 
 import { useRef, useState, useEffect, useCallback } from "react";
 
