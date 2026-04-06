@@ -58,9 +58,44 @@ interface GitHubCache {
   generatedAt: string;
 }
 
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null;
+
+const parseGitHubCache = (value: unknown): GitHubCache => {
+  if (!isRecord(value)) {
+    throw new Error("Invalid GitHub cache: expected an object.");
+  }
+
+  if (!isRecord(value.user)) {
+    throw new Error("Invalid GitHub cache: missing or invalid user.");
+  }
+
+  if (!Array.isArray(value.repos)) {
+    throw new Error("Invalid GitHub cache: repos must be an array.");
+  }
+
+  if (!Array.isArray(value.pinnedRepos)) {
+    throw new Error("Invalid GitHub cache: pinnedRepos must be an array.");
+  }
+
+  if (!Array.isArray(value.events)) {
+    throw new Error("Invalid GitHub cache: events must be an array.");
+  }
+
+  if (!Array.isArray(value.contributions)) {
+    throw new Error("Invalid GitHub cache: contributions must be an array.");
+  }
+
+  if (typeof value.generatedAt !== "string") {
+    throw new Error("Invalid GitHub cache: generatedAt must be a string.");
+  }
+
+  return value as GitHubCache;
+};
+
 // All data is served from the pre-fetched cache committed to the repository.
 // The cache is refreshed daily by the update-github-data GitHub Actions workflow.
-const githubCache = rawCache as GitHubCache;
+const githubCache = parseGitHubCache(rawCache);
 
 export const useGitHubUser = () =>
   useQuery({
