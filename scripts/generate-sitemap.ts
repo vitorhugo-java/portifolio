@@ -2,12 +2,13 @@
 // based on the "homepage" field of each repository.
 // Run with: bun scripts/generate-sitemap.ts
 
+import { readFileSync } from "fs";
+import { resolve } from "path";
+
 const GITHUB_USERNAME = "vitorhugo-java";
 const SITE_URL = "https://vitorhugo-java.github.io"; // Update with your actual site URL
 
-async function fetchAllRepos(): Promise<any[]> {
-  const repos: any[] = [];
-  let page = 1;
+function buildHeaders(): Record<string, string> {
   const headers: Record<string, string> = {
     "Accept": "application/vnd.github+json",
     "X-GitHub-Api-Version": "2022-11-28",
@@ -15,6 +16,13 @@ async function fetchAllRepos(): Promise<any[]> {
   if (process.env.GITHUB_TOKEN) {
     headers["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
   }
+  return headers;
+}
+
+async function fetchAllRepos(): Promise<any[]> {
+  const repos: any[] = [];
+  let page = 1;
+  const headers = buildHeaders();
   while (true) {
     const res = await fetch(
       `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}`,
@@ -29,8 +37,40 @@ async function fetchAllRepos(): Promise<any[]> {
   return repos;
 }
 
+async function fetchPinnedRepos(): Promise<any[]> {
+  const pinnedReposPath = resolve(import.meta.dirname, "../src/data/pinnedRepos.json");
+  const pinnedUrls: string[] = JSON.parse(readFileSync(pinnedReposPath, "utf-8"));
+  const headers = buildHeaders();
+  const results: any[] = [];
+  for (const url of pinnedUrls) {
+    const parts = url.replace(/\/$/, "").split("/");
+    const owner = parts[parts.length - 2];
+    const repo = parts[parts.length - 1];
+    try {
+      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, { headers });
+      if (!res.ok) {
+        console.warn(`  Skipping pinned repo ${owner}/${repo}: ${res.status}`);
+        continue;
+      }
+      results.push(await res.json());
+    } catch (e) {
+      console.warn(`  Skipping pinned repo ${owner}/${repo}: ${e}`);
+    }
+  }
+  return results;
+}
+
 async function main() {
-  const repos = await fetchAllRepos();
+  const [userRepos, pinnedRepos] = await Promise.all([fetchAllRepos(), fetchPinnedRepos()]);
+
+  // Merge repos, deduplicating by full_name (first occurrence wins; user repos are added first)
+  const repoMap = new Map<string, any>();
+  for (const r of [...userRepos, ...pinnedRepos]) {
+    if (!repoMap.has(r.full_name)) {
+      repoMap.set(r.full_name, r);
+    }
+  }
+  const repos = Array.from(repoMap.values());
   const today = new Date().toISOString().split("T")[0];
 
   // Collect homepage URLs with their last pushed date
