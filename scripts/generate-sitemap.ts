@@ -8,9 +8,17 @@ const SITE_URL = "https://vitorhugo-java.github.io"; // Update with your actual 
 async function fetchAllRepos(): Promise<any[]> {
   const repos: any[] = [];
   let page = 1;
+  const headers: Record<string, string> = {
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+  if (process.env.GITHUB_TOKEN) {
+    headers["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
   while (true) {
     const res = await fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}`
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}`,
+      { headers }
     );
     if (!res.ok) throw new Error(`Failed to fetch repos: ${res.status}`);
     const data = await res.json();

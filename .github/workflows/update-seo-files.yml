@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   update-seo:
@@ -25,6 +26,8 @@ jobs:
 
       - name: Generate robots.txt and sitemap.xml
         run: bun scripts/generate-sitemap.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit and push to main if files changed
         run: |
@@ -38,14 +41,7 @@ jobs:
             git push origin main
           fi
 
-      - name: Push to prod to trigger deployment
-        run: |
-          git fetch origin
-          if git ls-remote --exit-code --heads origin prod; then
-            git checkout -B prod origin/prod
-            git merge origin/main --no-edit -m "chore: merge main into prod for deployment"
-          else
-            git checkout -b prod
-          fi
-          git push origin prod
-
+      - name: Trigger deployment workflow
+        run: gh workflow run deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -37,7 +37,7 @@ const ContributionHeatmap = () => {
     return () => observer.disconnect();
   }, [updateMaxWeeks]);
 
-  const { data: allDays, isLoading, error } = useContributions();
+  const { data: days, isLoading, error } = useContributions();
 
   if (isLoading) {
     return (
@@ -49,15 +49,14 @@ const ContributionHeatmap = () => {
     );
   }
 
-  if (error || !allDays || allDays.length === 0) return null;
+  if (error || !days || days.length === 0) return null;
 
   // Trim days to fit maxWeeks
-  const maxDays = maxWeeks * 7;
-  const days = allDays.slice(-maxDays);
+  const visibleDays = days.slice(-(maxWeeks * 7));
 
-  const firstDate = new Date(days[0].date);
+  const firstDate = new Date(visibleDays[0].date);
   const startDow = firstDate.getDay();
-  const padded: (DayData | null)[] = [...Array(startDow).fill(null), ...days];
+  const padded: (DayData | null)[] = [...Array(startDow).fill(null), ...visibleDays];
 
   const weeks: (DayData | null)[][] = [];
   for (let i = 0; i < padded.length; i += 7) {
