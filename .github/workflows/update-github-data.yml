@@ -1,0 +1,47 @@
+name: Update GitHub Data Cache
+
+on:
+  schedule:
+    # Runs every day at 01:00 UTC
+    - cron: "0 1 * * *"
+  workflow_dispatch: # Allow manual runs
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Fetch GitHub data
+        run: bun scripts/fetch-github-data.ts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit updated cache to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/github-cache.json
+          if git diff --cached --quiet; then
+            echo "No changes to data cache, skipping commit."
+          else
+            git commit -m "chore: update GitHub data cache"
+            git push origin main
+          fi
+
+      - name: Trigger deployment workflow
+        run: gh workflow run deploy.yml --ref main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

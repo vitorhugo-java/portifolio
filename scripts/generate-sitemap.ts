@@ -1,6 +1,6 @@
 // This script fetches all repos for the user and generates sitemap.xml and robots.txt
 // based on the "homepage" field of each repository.
-// Run with: npx tsx scripts/generate-sitemap.ts
+// Run with: bun scripts/generate-sitemap.ts
 
 const GITHUB_USERNAME = "vitorhugo-java";
 const SITE_URL = "https://vitorhugo-java.github.io"; // Update with your actual site URL
@@ -8,9 +8,17 @@ const SITE_URL = "https://vitorhugo-java.github.io"; // Update with your actual 
 async function fetchAllRepos(): Promise<any[]> {
   const repos: any[] = [];
   let page = 1;
+  const headers: Record<string, string> = {
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+  if (process.env.GITHUB_TOKEN) {
+    headers["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
   while (true) {
     const res = await fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}`
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&page=${page}`,
+      { headers }
     );
     if (!res.ok) throw new Error(`Failed to fetch repos: ${res.status}`);
     const data = await res.json();
@@ -23,22 +31,30 @@ async function fetchAllRepos(): Promise<any[]> {
 
 async function main() {
   const repos = await fetchAllRepos();
+  const today = new Date().toISOString().split("T")[0];
 
-  // Collect homepage URLs
-  const homepages: string[] = repos
+  // Collect homepage URLs with their last pushed date
+  const homepageEntries: { url: string; lastmod: string }[] = repos
     .filter((r: any) => r.homepage && r.homepage.trim() !== "")
-    .map((r: any) => r.homepage.trim());
+    .map((r: any) => ({
+      url: r.homepage.trim(),
+      lastmod: r.pushed_at ? r.pushed_at.split("T")[0] : today,
+    }));
 
-  // Add site root
-  const allUrls = [SITE_URL, ...homepages];
+  // Add site root as the first entry
+  const allEntries = [
+    { url: SITE_URL, lastmod: today },
+    ...homepageEntries,
+  ];
 
   // Generate sitemap.xml
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allUrls
+${allEntries
   .map(
-    (url) => `  <url>
+    ({ url, lastmod }) => `  <url>
     <loc>${url}</loc>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>weekly</changefreq>
   </url>`
   )
@@ -70,9 +86,9 @@ Sitemap: ${SITE_URL}/sitemap.xml`;
   fs.writeFileSync(path.join(publicDir, "sitemap.xml"), sitemap);
   fs.writeFileSync(path.join(publicDir, "robots.txt"), robots);
 
-  console.log(`Generated sitemap.xml with ${allUrls.length} URLs`);
+  console.log(`Generated sitemap.xml with ${allEntries.length} URLs`);
   console.log(`Generated robots.txt with sitemap reference`);
-  console.log("Homepage URLs found:", homepages);
+  console.log("Homepage URLs found:", homepageEntries.map((e) => e.url));
 }
 
 main().catch(console.error);

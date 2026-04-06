@@ -1,33 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
-import { GitHubRepo } from "@/hooks/useGitHubData";
+import { usePinnedRepos } from "@/hooks/useGitHubData";
 import RepoCard from "@/components/RepoCard";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Pin } from "lucide-react";
-import pinnedUrls from "@/data/pinnedRepos.json";
-
-const parseRepoUrl = (url: string) => {
-  const parts = url.replace(/\/$/, "").split("/");
-  return { owner: parts[parts.length - 2], repo: parts[parts.length - 1] };
-};
-
-const fetchPinnedRepos = async (): Promise<GitHubRepo[]> => {
-  const repos = await Promise.all(
-    pinnedUrls.map(async (url) => {
-      const { owner, repo } = parseRepoUrl(url);
-      const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
-      if (!res.ok) throw new Error(`Failed to fetch ${repo}`);
-      return res.json();
-    })
-  );
-  return repos;
-};
 
 const PinnedReposSection = () => {
-  const { data: repos, isLoading, error } = useQuery({
-    queryKey: ["pinnedRepos"],
-    queryFn: fetchPinnedRepos,
-    staleTime: 1000 * 60 * 10,
-  });
+  const { data: repos, isLoading, error } = usePinnedRepos();
 
   return (
     <section className="py-16 px-6">

@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-
-const GITHUB_USERNAME = "vitorhugo-java";
+import rawCache from "@/data/github-cache.json";
 
 export interface GitHubUser {
   login: string;
@@ -29,20 +28,6 @@ export interface GitHubRepo {
   homepage: string | null;
 }
 
-const fetchUser = async (): Promise<GitHubUser> => {
-  const res = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
-  if (!res.ok) throw new Error("Failed to fetch user");
-  return res.json();
-};
-
-const fetchRepos = async (): Promise<GitHubRepo[]> => {
-  const res = await fetch(
-    `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=created&direction=desc&per_page=6&type=owner`
-  );
-  if (!res.ok) throw new Error("Failed to fetch repos");
-  return res.json();
-};
-
 export interface GitHubEvent {
   id: string;
   type: string;
@@ -58,22 +43,99 @@ export interface GitHubEvent {
   };
 }
 
-const fetchEvents = async (): Promise<GitHubEvent[]> => {
-  const res = await fetch(
-    `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=10`
-  );
-  if (!res.ok) throw new Error("Failed to fetch events");
-  return res.json();
+export interface DayData {
+  date: string;
+  count: number;
+  level: number;
+}
+
+interface GitHubCache {
+  user: GitHubUser;
+  repos: GitHubRepo[];
+  pinnedRepos: GitHubRepo[];
+  events: GitHubEvent[];
+  contributions: DayData[];
+  generatedAt: string;
+}
+
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  typeof value === "object" && value !== null;
+
+const parseGitHubCache = (value: unknown): GitHubCache => {
+  if (!isRecord(value)) {
+    throw new Error("Invalid GitHub cache: expected an object.");
+  }
+
+  if (!isRecord(value.user)) {
+    throw new Error("Invalid GitHub cache: missing or invalid user.");
+  }
+
+  if (!Array.isArray(value.repos)) {
+    throw new Error("Invalid GitHub cache: repos must be an array.");
+  }
+
+  if (!Array.isArray(value.pinnedRepos)) {
+    throw new Error("Invalid GitHub cache: pinnedRepos must be an array.");
+  }
+
+  if (!Array.isArray(value.events)) {
+    throw new Error("Invalid GitHub cache: events must be an array.");
+  }
+
+  if (!Array.isArray(value.contributions)) {
+    throw new Error("Invalid GitHub cache: contributions must be an array.");
+  }
+
+  if (typeof value.generatedAt !== "string") {
+    throw new Error("Invalid GitHub cache: generatedAt must be a string.");
+  }
+
+  return value as GitHubCache;
 };
 
+// All data is served from the pre-fetched cache committed to the repository.
+// The cache is refreshed daily by the update-github-data GitHub Actions workflow.
+const githubCache = parseGitHubCache(rawCache);
+
 export const useGitHubUser = () =>
-  useQuery({ queryKey: ["github-user"], queryFn: fetchUser, staleTime: 1000 * 60 * 10 });
+  useQuery({
+    queryKey: ["github-user"],
+    queryFn: () => Promise.resolve(githubCache.user),
+    initialData: githubCache.user,
+    staleTime: Infinity,
+  });
 
 export const useGitHubRepos = () =>
-  useQuery({ queryKey: ["github-repos"], queryFn: fetchRepos, staleTime: 1000 * 60 * 10 });
+  useQuery({
+    queryKey: ["github-repos"],
+    queryFn: () => Promise.resolve(githubCache.repos),
+    initialData: githubCache.repos,
+    staleTime: Infinity,
+  });
 
 export const useGitHubEvents = () =>
-  useQuery({ queryKey: ["github-events"], queryFn: fetchEvents, staleTime: 1000 * 60 * 5 });
+  useQuery({
+    queryKey: ["github-events"],
+    queryFn: () => Promise.resolve(githubCache.events),
+    initialData: githubCache.events,
+    staleTime: Infinity,
+  });
+
+export const usePinnedRepos = () =>
+  useQuery({
+    queryKey: ["github-pinned-repos"],
+    queryFn: () => Promise.resolve(githubCache.pinnedRepos),
+    initialData: githubCache.pinnedRepos,
+    staleTime: Infinity,
+  });
+
+export const useContributions = () =>
+  useQuery({
+    queryKey: ["github-contributions"],
+    queryFn: () => Promise.resolve(githubCache.contributions),
+    initialData: githubCache.contributions,
+    staleTime: Infinity,
+  });
 
 // Language color mapping
 export const LANGUAGE_COLORS: Record<string, string> = {

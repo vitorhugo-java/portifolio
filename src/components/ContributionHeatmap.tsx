@@ -1,18 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useContributions, DayData } from "@/hooks/useGitHubData";
 
-const GITHUB_USERNAME = "vitorhugo-java";
 const CELL_SIZE = 13;
 const GAP = 3;
 const LABEL_OFFSET = 30;
-
-interface DayData {
-  date: string;
-  count: number;
-  level: number;
-}
 
 const LEVEL_COLORS = [
   "hsl(220 14% 14%)",
@@ -24,40 +17,6 @@ const LEVEL_COLORS = [
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const DAYS_LABELS = ["Mon", "Wed", "Fri"];
-
-const fetchContributions = async (): Promise<DayData[]> => {
-  const allEvents: any[] = [];
-  for (let page = 1; page <= 3; page++) {
-    const res = await fetch(
-      `https://api.github.com/users/${GITHUB_USERNAME}/events/public?per_page=100&page=${page}`
-    );
-    if (!res.ok) break;
-    const data = await res.json();
-    if (data.length === 0) break;
-    allEvents.push(...data);
-  }
-
-  const countMap: Record<string, number> = {};
-  allEvents.forEach((event: any) => {
-    const date = event.created_at.split("T")[0];
-    countMap[date] = (countMap[date] || 0) + 1;
-  });
-
-  const today = new Date();
-  const days: DayData[] = [];
-  for (let i = 364; i >= 0; i--) {
-    const d = new Date(today);
-    d.setDate(d.getDate() - i);
-    const dateStr = d.toISOString().split("T")[0];
-    const count = countMap[dateStr] || 0;
-    days.push({
-      date: dateStr,
-      count,
-      level: count === 0 ? 0 : count <= 2 ? 1 : count <= 5 ? 2 : count <= 10 ? 3 : 4,
-    });
-  }
-  return days;
-};
 
 const ContributionHeatmap = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -78,11 +37,7 @@ const ContributionHeatmap = () => {
     return () => observer.disconnect();
   }, [updateMaxWeeks]);
 
-  const { data: allDays, isLoading, error } = useQuery({
-    queryKey: ["contribution-heatmap"],
-    queryFn: fetchContributions,
-    staleTime: 1000 * 60 * 30,
-  });
+  const { data: days, isLoading, error } = useContributions();
 
   if (isLoading) {
     return (
@@ -94,15 +49,14 @@ const ContributionHeatmap = () => {
     );
   }
 
-  if (error || !allDays) return null;
+  if (error || !days || days.length === 0) return null;
 
   // Trim days to fit maxWeeks
-  const maxDays = maxWeeks * 7;
-  const days = allDays.slice(-maxDays);
+  const visibleDays = days.slice(-(maxWeeks * 7));
 
-  const firstDate = new Date(days[0].date);
+  const firstDate = new Date(visibleDays[0].date);
   const startDow = firstDate.getDay();
-  const padded: (DayData | null)[] = [...Array(startDow).fill(null), ...days];
+  const padded: (DayData | null)[] = [...Array(startDow).fill(null), ...visibleDays];
 
   const weeks: (DayData | null)[][] = [];
   for (let i = 0; i < padded.length; i += 7) {
