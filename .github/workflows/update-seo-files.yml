@@ -3,7 +3,7 @@ name: Update SEO Files (robots.txt & sitemap.xml)
 on:
   schedule:
     # Runs every Monday at 02:00 UTC
-    - cron: "0 2 * * 1"
+    - cron: "0 2 * * *"
   workflow_dispatch: # Allow manual runs
 
 permissions:
