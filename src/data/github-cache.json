@@ -27,12 +27,12 @@
     "hireable": true,
     "bio": "Desenvolvedor Java | Spring Framework • RESTful • GraphQL • React • Flutter • MySQL • Docker • MongoDB | Construindo Aplicações Web Escaláveis",
     "twitter_username": null,
-    "public_repos": 33,
+    "public_repos": 32,
     "public_gists": 0,
     "followers": 14,
     "following": 21,
     "created_at": "2020-05-22T15:23:20Z",
-    "updated_at": "2026-04-06T11:25:36Z"
+    "updated_at": "2026-04-07T01:58:36Z"
   },
   "repos": [
     {
@@ -63,7 +63,7 @@
         "site_admin": false
       },
       "html_url": "https://github.com/vitorhugo-java/py-kill-anydesk-2-webhook",
-      "description": null,
+      "description": "A Python script that continuously polls a webhook URL and terminates AnyDesk when the webhook returns",
       "fork": false,
       "url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-2-webhook",
       "forks_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-2-webhook/forks",
@@ -103,14 +103,14 @@
       "releases_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-2-webhook/releases{/id}",
       "deployments_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-2-webhook/deployments",
       "created_at": "2026-04-06T17:23:20Z",
-      "updated_at": "2026-04-06T18:09:58Z",
-      "pushed_at": "2026-04-06T18:09:56Z",
+      "updated_at": "2026-04-07T03:03:59Z",
+      "pushed_at": "2026-04-07T03:00:20Z",
       "git_url": "git://github.com/vitorhugo-java/py-kill-anydesk-2-webhook.git",
       "ssh_url": "git@github.com:vitorhugo-java/py-kill-anydesk-2-webhook.git",
       "clone_url": "https://github.com/vitorhugo-java/py-kill-anydesk-2-webhook.git",
       "svn_url": "https://github.com/vitorhugo-java/py-kill-anydesk-2-webhook",
-      "homepage": null,
-      "size": 7,
+      "homepage": "",
+      "size": 8,
       "stargazers_count": 0,
       "watchers_count": 0,
       "language": "Python",
@@ -137,7 +137,18 @@
       "web_commit_signoff_required": false,
       "has_pull_requests": true,
       "pull_request_creation_policy": "all",
-      "topics": [],
+      "topics": [
+        "api",
+        "cmd",
+        "n8n",
+        "process",
+        "python",
+        "python-script",
+        "python3",
+        "shell",
+        "webhook",
+        "webhook-api"
+      ],
       "visibility": "public",
       "forks": 0,
       "open_issues": 0,
@@ -220,13 +231,13 @@
       "deployments_url": "https://api.github.com/repos/vitorhugo-java/portifolio/deployments",
       "created_at": "2026-03-23T12:34:58Z",
       "updated_at": "2026-04-06T17:20:00Z",
-      "pushed_at": "2026-04-06T17:19:56Z",
+      "pushed_at": "2026-04-07T02:12:49Z",
       "git_url": "git://github.com/vitorhugo-java/portifolio.git",
       "ssh_url": "git@github.com:vitorhugo-java/portifolio.git",
       "clone_url": "https://github.com/vitorhugo-java/portifolio.git",
       "svn_url": "https://github.com/vitorhugo-java/portifolio",
       "homepage": "http://hugojava.dev/",
-      "size": 390,
+      "size": 398,
       "stargazers_count": 0,
       "watchers_count": 0,
       "language": "TypeScript",
@@ -242,122 +253,6 @@
       "disabled": false,
       "open_issues_count": 0,
       "license": null,
-      "allow_forking": true,
-      "is_template": false,
-      "web_commit_signoff_required": false,
-      "has_pull_requests": true,
-      "pull_request_creation_policy": "all",
-      "topics": [],
-      "visibility": "public",
-      "forks": 0,
-      "open_issues": 0,
-      "watchers": 0,
-      "default_branch": "main",
-      "permissions": {
-        "admin": false,
-        "maintain": false,
-        "push": false,
-        "triage": false,
-        "pull": false
-      }
-    },
-    {
-      "id": 1203038581,
-      "node_id": "R_kgDOR7TpdQ",
-      "name": "py-kill-anydesk-webhook-recever",
-      "full_name": "vitorhugo-java/py-kill-anydesk-webhook-recever",
-      "private": false,
-      "owner": {
-        "login": "vitorhugo-java",
-        "id": 65777252,
-        "node_id": "MDQ6VXNlcjY1Nzc3MjUy",
-        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/vitorhugo-java",
-        "html_url": "https://github.com/vitorhugo-java",
-        "followers_url": "https://api.github.com/users/vitorhugo-java/followers",
-        "following_url": "https://api.github.com/users/vitorhugo-java/following{/other_user}",
-        "gists_url": "https://api.github.com/users/vitorhugo-java/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/vitorhugo-java/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/vitorhugo-java/subscriptions",
-        "organizations_url": "https://api.github.com/users/vitorhugo-java/orgs",
-        "repos_url": "https://api.github.com/users/vitorhugo-java/repos",
-        "events_url": "https://api.github.com/users/vitorhugo-java/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/vitorhugo-java/received_events",
-        "type": "User",
-        "user_view_type": "public",
-        "site_admin": false
-      },
-      "html_url": "https://github.com/vitorhugo-java/py-kill-anydesk-webhook-recever",
-      "description": null,
-      "fork": false,
-      "url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever",
-      "forks_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/forks",
-      "keys_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/keys{/key_id}",
-      "collaborators_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/collaborators{/collaborator}",
-      "teams_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/teams",
-      "hooks_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/hooks",
-      "issue_events_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/issues/events{/number}",
-      "events_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/events",
-      "assignees_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/assignees{/user}",
-      "branches_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/branches{/branch}",
-      "tags_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/tags",
-      "blobs_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/git/blobs{/sha}",
-      "git_tags_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/git/tags{/sha}",
-      "git_refs_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/git/refs{/sha}",
-      "trees_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/git/trees{/sha}",
-      "statuses_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/statuses/{sha}",
-      "languages_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/languages",
-      "stargazers_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/stargazers",
-      "contributors_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/contributors",
-      "subscribers_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/subscribers",
-      "subscription_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/subscription",
-      "commits_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/commits{/sha}",
-      "git_commits_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/git/commits{/sha}",
-      "comments_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/comments{/number}",
-      "issue_comment_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/issues/comments{/number}",
-      "contents_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/contents/{+path}",
-      "compare_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/compare/{base}...{head}",
-      "merges_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/merges",
-      "archive_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/{archive_format}{/ref}",
-      "downloads_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/downloads",
-      "issues_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/issues{/number}",
-      "pulls_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/pulls{/number}",
-      "milestones_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/milestones{/number}",
-      "notifications_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/notifications{?since,all,participating}",
-      "labels_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/labels{/name}",
-      "releases_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/releases{/id}",
-      "deployments_url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever/deployments",
-      "created_at": "2026-04-06T16:55:58Z",
-      "updated_at": "2026-04-06T17:10:15Z",
-      "pushed_at": "2026-04-06T17:09:38Z",
-      "git_url": "git://github.com/vitorhugo-java/py-kill-anydesk-webhook-recever.git",
-      "ssh_url": "git@github.com:vitorhugo-java/py-kill-anydesk-webhook-recever.git",
-      "clone_url": "https://github.com/vitorhugo-java/py-kill-anydesk-webhook-recever.git",
-      "svn_url": "https://github.com/vitorhugo-java/py-kill-anydesk-webhook-recever",
-      "homepage": null,
-      "size": 8,
-      "stargazers_count": 0,
-      "watchers_count": 0,
-      "language": "Python",
-      "has_issues": true,
-      "has_projects": true,
-      "has_downloads": true,
-      "has_wiki": false,
-      "has_pages": false,
-      "has_discussions": false,
-      "forks_count": 0,
-      "mirror_url": null,
-      "archived": false,
-      "disabled": false,
-      "open_issues_count": 0,
-      "license": {
-        "key": "mit",
-        "name": "MIT License",
-        "spdx_id": "MIT",
-        "url": "https://api.github.com/licenses/mit",
-        "node_id": "MDc6TGljZW5zZTEz"
-      },
       "allow_forking": true,
       "is_template": false,
       "web_commit_signoff_required": false,
@@ -1873,6 +1768,126 @@
         "triage": false,
         "pull": false
       }
+    },
+    {
+      "id": 417998328,
+      "node_id": "R_kgDOGOol-A",
+      "name": "Maid-chan",
+      "full_name": "vitorhugo-java/Maid-chan",
+      "private": false,
+      "owner": {
+        "login": "vitorhugo-java",
+        "id": 65777252,
+        "node_id": "MDQ6VXNlcjY1Nzc3MjUy",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-java",
+        "html_url": "https://github.com/vitorhugo-java",
+        "followers_url": "https://api.github.com/users/vitorhugo-java/followers",
+        "following_url": "https://api.github.com/users/vitorhugo-java/following{/other_user}",
+        "gists_url": "https://api.github.com/users/vitorhugo-java/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/vitorhugo-java/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/vitorhugo-java/subscriptions",
+        "organizations_url": "https://api.github.com/users/vitorhugo-java/orgs",
+        "repos_url": "https://api.github.com/users/vitorhugo-java/repos",
+        "events_url": "https://api.github.com/users/vitorhugo-java/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/vitorhugo-java/received_events",
+        "type": "User",
+        "user_view_type": "public",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/vitorhugo-java/Maid-chan",
+      "description": "A simple Discord bot.",
+      "fork": false,
+      "url": "https://api.github.com/repos/vitorhugo-java/Maid-chan",
+      "forks_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/forks",
+      "keys_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/teams",
+      "hooks_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/hooks",
+      "issue_events_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/events",
+      "assignees_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/tags",
+      "blobs_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/languages",
+      "stargazers_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/stargazers",
+      "contributors_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/contributors",
+      "subscribers_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/subscribers",
+      "subscription_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/subscription",
+      "commits_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/merges",
+      "archive_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/downloads",
+      "issues_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/labels{/name}",
+      "releases_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/vitorhugo-java/Maid-chan/deployments",
+      "created_at": "2021-10-17T02:23:30Z",
+      "updated_at": "2025-11-30T16:29:29Z",
+      "pushed_at": "2025-11-30T16:29:26Z",
+      "git_url": "git://github.com/vitorhugo-java/Maid-chan.git",
+      "ssh_url": "git@github.com:vitorhugo-java/Maid-chan.git",
+      "clone_url": "https://github.com/vitorhugo-java/Maid-chan.git",
+      "svn_url": "https://github.com/vitorhugo-java/Maid-chan",
+      "homepage": "",
+      "size": 53,
+      "stargazers_count": 1,
+      "watchers_count": 1,
+      "language": "Python",
+      "has_issues": true,
+      "has_projects": true,
+      "has_downloads": true,
+      "has_wiki": true,
+      "has_pages": false,
+      "has_discussions": false,
+      "forks_count": 1,
+      "mirror_url": null,
+      "archived": false,
+      "disabled": false,
+      "open_issues_count": 0,
+      "license": {
+        "key": "gpl-3.0",
+        "name": "GNU General Public License v3.0",
+        "spdx_id": "GPL-3.0",
+        "url": "https://api.github.com/licenses/gpl-3.0",
+        "node_id": "MDc6TGljZW5zZTk="
+      },
+      "allow_forking": true,
+      "is_template": false,
+      "web_commit_signoff_required": false,
+      "has_pull_requests": true,
+      "pull_request_creation_policy": "all",
+      "topics": [
+        "discord",
+        "discord-bot",
+        "python"
+      ],
+      "visibility": "public",
+      "forks": 1,
+      "open_issues": 0,
+      "watchers": 1,
+      "default_branch": "master",
+      "permissions": {
+        "admin": false,
+        "maintain": false,
+        "push": false,
+        "triage": false,
+        "pull": false
+      }
     }
   ],
   "pinnedRepos": [
@@ -1944,7 +1959,7 @@
       "releases_url": "https://api.github.com/repos/EspacoGeek-Teams/SpringAPI_EspacoGeek/releases{/id}",
       "deployments_url": "https://api.github.com/repos/EspacoGeek-Teams/SpringAPI_EspacoGeek/deployments",
       "created_at": "2024-04-30T05:00:59Z",
-      "updated_at": "2026-04-01T20:00:01Z",
+      "updated_at": "2026-04-07T17:43:14Z",
       "pushed_at": "2026-04-01T19:59:56Z",
       "git_url": "git://github.com/EspacoGeek-Teams/SpringAPI_EspacoGeek.git",
       "ssh_url": "git@github.com:EspacoGeek-Teams/SpringAPI_EspacoGeek.git",
@@ -1952,8 +1967,8 @@
       "svn_url": "https://github.com/EspacoGeek-Teams/SpringAPI_EspacoGeek",
       "homepage": "https://espacogeek-teams.github.io/SpringAPI_EspacoGeek/",
       "size": 3235,
-      "stargazers_count": 0,
-      "watchers_count": 0,
+      "stargazers_count": 1,
+      "watchers_count": 1,
       "language": "Java",
       "has_issues": true,
       "has_projects": true,
@@ -1994,7 +2009,7 @@
       "visibility": "public",
       "forks": 0,
       "open_issues": 6,
-      "watchers": 0,
+      "watchers": 1,
       "default_branch": "master",
       "permissions": {
         "admin": false,
@@ -2185,6 +2200,84 @@
   ],
   "events": [
     {
+      "id": "10266841101",
+      "type": "PushEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-java",
+        "display_login": "vitorhugo-java",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-java",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1203061543,
+        "name": "vitorhugo-java/py-kill-anydesk-2-webhook",
+        "url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-2-webhook"
+      },
+      "payload": {
+        "repository_id": 1203061543,
+        "push_id": 32559901884,
+        "ref": "refs/heads/main",
+        "head": "9c9f9b6ff02ffeb10b3092b856ceded856b9742b",
+        "before": "699c7ef1cefec0cfda7b15972afb59d0536c2cae"
+      },
+      "public": true,
+      "created_at": "2026-04-07T03:00:21Z"
+    },
+    {
+      "id": "10265711706",
+      "type": "PushEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-java",
+        "display_login": "vitorhugo-java",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-java",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1189545274,
+        "name": "vitorhugo-java/portifolio",
+        "url": "https://api.github.com/repos/vitorhugo-java/portifolio"
+      },
+      "payload": {
+        "repository_id": 1189545274,
+        "push_id": 32558781508,
+        "ref": "refs/heads/prod",
+        "head": "74704cacb68d8ca46fe1c1148435c517aa083b8b",
+        "before": "3735986e91b3bdb9c942dca4c724e703bee2a6eb"
+      },
+      "public": true,
+      "created_at": "2026-04-07T02:12:49Z"
+    },
+    {
+      "id": "10265705567",
+      "type": "PushEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-java",
+        "display_login": "vitorhugo-java",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-java",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1189545274,
+        "name": "vitorhugo-java/portifolio",
+        "url": "https://api.github.com/repos/vitorhugo-java/portifolio"
+      },
+      "payload": {
+        "repository_id": 1189545274,
+        "push_id": 32558775508,
+        "ref": "refs/heads/prod",
+        "head": "3735986e91b3bdb9c942dca4c724e703bee2a6eb",
+        "before": "8489ab9b815adc9ddcdbf6c3c2e43ca82fe2de11"
+      },
+      "public": true,
+      "created_at": "2026-04-07T02:12:34Z"
+    },
+    {
       "id": "10252233439",
       "type": "DeleteEvent",
       "actor": {
@@ -2256,7 +2349,7 @@
         "ref_type": "branch",
         "full_ref": "refs/heads/main",
         "master_branch": "main",
-        "description": null,
+        "description": "A Python script that continuously polls a webhook URL and terminates AnyDesk when the webhook returns",
         "pusher_type": "user"
       },
       "public": true,
@@ -2404,86 +2497,9 @@
       },
       "public": true,
       "created_at": "2026-04-06T17:18:11Z"
-    },
-    {
-      "id": "10250454036",
-      "type": "PushEvent",
-      "actor": {
-        "id": 65777252,
-        "login": "vitorhugo-java",
-        "display_login": "vitorhugo-java",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/vitorhugo-java",
-        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
-      },
-      "repo": {
-        "id": 1189545274,
-        "name": "vitorhugo-java/portifolio",
-        "url": "https://api.github.com/repos/vitorhugo-java/portifolio"
-      },
-      "payload": {
-        "repository_id": 1189545274,
-        "push_id": 32543619361,
-        "ref": "refs/heads/main",
-        "head": "78e899f88a73a5d8721029e4b63875a3c86e0c40",
-        "before": "558282ece1ab536818c2b3a1692edeb832dadbdd"
-      },
-      "public": true,
-      "created_at": "2026-04-06T17:18:10Z"
-    },
-    {
-      "id": "8128627271",
-      "type": "PublicEvent",
-      "actor": {
-        "id": 65777252,
-        "login": "vitorhugo-java",
-        "display_login": "vitorhugo-java",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/vitorhugo-java",
-        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
-      },
-      "repo": {
-        "id": 1203038581,
-        "name": "vitorhugo-java/py-kill-anydesk-webhook-recever",
-        "url": "https://api.github.com/repos/vitorhugo-java/py-kill-anydesk-webhook-recever"
-      },
-      "payload": {},
-      "public": true,
-      "created_at": "2026-04-06T16:55:58Z"
-    },
-    {
-      "id": "10245234278",
-      "type": "PushEvent",
-      "actor": {
-        "id": 65777252,
-        "login": "vitorhugo-java",
-        "display_login": "vitorhugo-java",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/vitorhugo-java",
-        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
-      },
-      "repo": {
-        "id": 1189545274,
-        "name": "vitorhugo-java/portifolio",
-        "url": "https://api.github.com/repos/vitorhugo-java/portifolio"
-      },
-      "payload": {
-        "repository_id": 1189545274,
-        "push_id": 32538394099,
-        "ref": "refs/heads/main",
-        "head": "558282ece1ab536818c2b3a1692edeb832dadbdd",
-        "before": "4f2468a45a2da4557feaa3d05b7a30965a121f34"
-      },
-      "public": true,
-      "created_at": "2026-04-06T14:39:41Z"
     }
   ],
   "contributions": [
-    {
-      "date": "2025-04-08",
-      "count": 0,
-      "level": 0
-    },
     {
       "date": "2025-04-09",
       "count": 0,
@@ -4226,12 +4242,12 @@
     },
     {
       "date": "2026-03-23",
-      "count": 1,
-      "level": 1
+      "count": 0,
+      "level": 0
     },
     {
       "date": "2026-03-24",
-      "count": 37,
+      "count": 35,
       "level": 4
     },
     {
@@ -4296,14 +4312,19 @@
     },
     {
       "date": "2026-04-06",
-      "count": 40,
+      "count": 39,
       "level": 4
     },
     {
       "date": "2026-04-07",
+      "count": 3,
+      "level": 2
+    },
+    {
+      "date": "2026-04-08",
       "count": 0,
       "level": 0
     }
   ],
-  "generatedAt": "2026-04-07T01:34:19.426Z"
+  "generatedAt": "2026-04-08T01:34:02.918Z"
 }
