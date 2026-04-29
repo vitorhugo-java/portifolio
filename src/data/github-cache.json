@@ -63,7 +63,7 @@
         "site_admin": false
       },
       "html_url": "https://github.com/vitorhugo-java/distributed-gateway-order-system",
-      "description": null,
+      "description": "🚀 Distributed Order System architecture featuring an API Gateway with JWT Authentication, WebClient dynamic routing, and GraalVM Native Image deployments via CI/CD pipelines.",
       "fork": false,
       "url": "https://api.github.com/repos/vitorhugo-java/distributed-gateway-order-system",
       "forks_url": "https://api.github.com/repos/vitorhugo-java/distributed-gateway-order-system/forks",
@@ -103,22 +103,22 @@
       "releases_url": "https://api.github.com/repos/vitorhugo-java/distributed-gateway-order-system/releases{/id}",
       "deployments_url": "https://api.github.com/repos/vitorhugo-java/distributed-gateway-order-system/deployments",
       "created_at": "2026-04-27T22:45:34Z",
-      "updated_at": "2026-04-28T00:32:54Z",
-      "pushed_at": "2026-04-28T00:32:51Z",
+      "updated_at": "2026-04-29T01:30:43Z",
+      "pushed_at": "2026-04-29T01:30:37Z",
       "git_url": "git://github.com/vitorhugo-java/distributed-gateway-order-system.git",
       "ssh_url": "git@github.com:vitorhugo-java/distributed-gateway-order-system.git",
       "clone_url": "https://github.com/vitorhugo-java/distributed-gateway-order-system.git",
       "svn_url": "https://github.com/vitorhugo-java/distributed-gateway-order-system",
-      "homepage": null,
-      "size": 558,
+      "homepage": "https://vitorhugo-java.github.io/distributed-gateway-order-system/",
+      "size": 882,
       "stargazers_count": 0,
       "watchers_count": 0,
-      "language": "JavaScript",
-      "has_issues": true,
-      "has_projects": true,
+      "language": "Java",
+      "has_issues": false,
+      "has_projects": false,
       "has_downloads": true,
-      "has_wiki": true,
-      "has_pages": false,
+      "has_wiki": false,
+      "has_pages": true,
       "has_discussions": false,
       "forks_count": 0,
       "mirror_url": null,
@@ -135,9 +135,24 @@
       "allow_forking": true,
       "is_template": false,
       "web_commit_signoff_required": false,
-      "has_pull_requests": true,
+      "has_pull_requests": false,
       "pull_request_creation_policy": "all",
-      "topics": [],
+      "topics": [
+        "api-gateway",
+        "ci-cd",
+        "clean-code",
+        "docker-compose",
+        "flyway",
+        "github-actions",
+        "graalvm",
+        "java-21",
+        "jwt-authentication",
+        "microservices",
+        "native-image",
+        "postgresql",
+        "spring-boot",
+        "swagger-ui"
+      ],
       "visibility": "public",
       "forks": 0,
       "open_issues": 0,
@@ -219,14 +234,14 @@
       "releases_url": "https://api.github.com/repos/vitorhugo-java/portifolio/releases{/id}",
       "deployments_url": "https://api.github.com/repos/vitorhugo-java/portifolio/deployments",
       "created_at": "2026-03-23T12:34:58Z",
-      "updated_at": "2026-04-27T02:58:35Z",
-      "pushed_at": "2026-04-27T02:58:30Z",
+      "updated_at": "2026-04-28T02:58:43Z",
+      "pushed_at": "2026-04-28T02:58:40Z",
       "git_url": "git://github.com/vitorhugo-java/portifolio.git",
       "ssh_url": "git@github.com:vitorhugo-java/portifolio.git",
       "clone_url": "https://github.com/vitorhugo-java/portifolio.git",
       "svn_url": "https://github.com/vitorhugo-java/portifolio",
       "homepage": "http://hugojava.dev/",
-      "size": 439,
+      "size": 442,
       "stargazers_count": 0,
       "watchers_count": 0,
       "language": "TypeScript",
@@ -2434,7 +2449,7 @@
   ],
   "events": [
     {
-      "id": "11124666610",
+      "id": "11176733553",
       "type": "PushEvent",
       "actor": {
         "id": 65777252,
@@ -2451,16 +2466,16 @@
       },
       "payload": {
         "repository_id": 1222985462,
-        "push_id": 33416352712,
+        "push_id": 33468299614,
         "ref": "refs/heads/main",
-        "head": "abcde755283ac905ccc439823325207370a5c9f5",
-        "before": "8530ee4c2019dee505aab393ea4822b9cbc548d3"
+        "head": "096790f0626f5830b2ecb1817ec07a041ff241f4",
+        "before": "5d3275e2cbc9fa80f087bc2f115d9a7e3d038924"
       },
       "public": true,
-      "created_at": "2026-04-28T00:32:51Z"
+      "created_at": "2026-04-29T01:30:37Z"
     },
     {
-      "id": "11123041979",
+      "id": "11176587473",
       "type": "PushEvent",
       "actor": {
         "id": 65777252,
@@ -2477,16 +2492,16 @@
       },
       "payload": {
         "repository_id": 1222985462,
-        "push_id": 33414729403,
+        "push_id": 33468153541,
         "ref": "refs/heads/main",
-        "head": "8530ee4c2019dee505aab393ea4822b9cbc548d3",
-        "before": "538584e2945f305f5a1ae472b5b7b8c50f47e44a"
+        "head": "5d3275e2cbc9fa80f087bc2f115d9a7e3d038924",
+        "before": "41b625638c6d60981a106462935e101a5ddc3ee5"
       },
       "public": true,
-      "created_at": "2026-04-27T23:27:38Z"
+      "created_at": "2026-04-29T01:24:23Z"
     },
     {
-      "id": "11122728735",
+      "id": "11176556880",
       "type": "PushEvent",
       "actor": {
         "id": 65777252,
@@ -2503,16 +2518,16 @@
       },
       "payload": {
         "repository_id": 1222985462,
-        "push_id": 33414416329,
+        "push_id": 33468123116,
         "ref": "refs/heads/main",
-        "head": "538584e2945f305f5a1ae472b5b7b8c50f47e44a",
-        "before": "082483ee17a87b753dddc310a1a908d02abfdde5"
+        "head": "41b625638c6d60981a106462935e101a5ddc3ee5",
+        "before": "0b767c2908f1429b1d67177781339a5235876f28"
       },
       "public": true,
-      "created_at": "2026-04-27T23:14:58Z"
+      "created_at": "2026-04-29T01:23:01Z"
     },
     {
-      "id": "11122547937",
+      "id": "11176484293",
       "type": "PushEvent",
       "actor": {
         "id": 65777252,
@@ -2529,16 +2544,16 @@
       },
       "payload": {
         "repository_id": 1222985462,
-        "push_id": 33414235934,
+        "push_id": 33468050620,
         "ref": "refs/heads/main",
-        "head": "082483ee17a87b753dddc310a1a908d02abfdde5",
-        "before": "21eb1017b9a838765c54c120759fa257e4d57038"
+        "head": "0b767c2908f1429b1d67177781339a5235876f28",
+        "before": "ef8ba3f2781caed04b88fae232ccb722d260d5b0"
       },
       "public": true,
-      "created_at": "2026-04-27T23:07:58Z"
+      "created_at": "2026-04-29T01:19:48Z"
     },
     {
-      "id": "11122184906",
+      "id": "11175620678",
       "type": "PushEvent",
       "actor": {
         "id": 65777252,
@@ -2555,16 +2570,16 @@
       },
       "payload": {
         "repository_id": 1222985462,
-        "push_id": 33413873106,
+        "push_id": 33467188760,
         "ref": "refs/heads/main",
-        "head": "21eb1017b9a838765c54c120759fa257e4d57038",
-        "before": "4bb60bca58413c19de6bd6e600523b3fbdd8ade8"
+        "head": "ef8ba3f2781caed04b88fae232ccb722d260d5b0",
+        "before": "ea30f2d342116fc7d7c3868c6de2564c95c3bc47"
       },
       "public": true,
-      "created_at": "2026-04-27T22:55:21Z"
+      "created_at": "2026-04-29T00:43:03Z"
     },
     {
-      "id": "11121993451",
+      "id": "11175603120",
       "type": "PushEvent",
       "actor": {
         "id": 65777252,
@@ -2581,17 +2596,17 @@
       },
       "payload": {
         "repository_id": 1222985462,
-        "push_id": 33413681741,
+        "push_id": 33467171324,
         "ref": "refs/heads/main",
-        "head": "4bb60bca58413c19de6bd6e600523b3fbdd8ade8",
-        "before": "01acc985fb62087cc5c5886b052dab4ef6bd43df"
+        "head": "ea30f2d342116fc7d7c3868c6de2564c95c3bc47",
+        "before": "801819531834fb51eae125bc1a182332986fad11"
       },
       "public": true,
-      "created_at": "2026-04-27T22:48:09Z"
+      "created_at": "2026-04-29T00:42:17Z"
     },
     {
-      "id": "11121926878",
-      "type": "CreateEvent",
+      "id": "11175485135",
+      "type": "PushEvent",
       "actor": {
         "id": 65777252,
         "login": "vitorhugo-java",
@@ -2606,19 +2621,18 @@
         "url": "https://api.github.com/repos/vitorhugo-java/distributed-gateway-order-system"
       },
       "payload": {
-        "ref": "main",
-        "ref_type": "branch",
-        "full_ref": "refs/heads/main",
-        "master_branch": "main",
-        "description": null,
-        "pusher_type": "user"
+        "repository_id": 1222985462,
+        "push_id": 33467053314,
+        "ref": "refs/heads/main",
+        "head": "801819531834fb51eae125bc1a182332986fad11",
+        "before": "36cd4ea7923c808449ba519bd9fe7b8fdfe484b2"
       },
       "public": true,
-      "created_at": "2026-04-27T22:45:38Z"
+      "created_at": "2026-04-29T00:37:05Z"
     },
     {
-      "id": "11051070267",
-      "type": "CreateEvent",
+      "id": "11175138847",
+      "type": "PushEvent",
       "actor": {
         "id": 65777252,
         "login": "vitorhugo-java",
@@ -2628,28 +2642,74 @@
         "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
       },
       "repo": {
-        "id": 1221324149,
-        "name": "vitorhugo-java/transaction-service",
-        "url": "https://api.github.com/repos/vitorhugo-java/transaction-service"
+        "id": 1222985462,
+        "name": "vitorhugo-java/distributed-gateway-order-system",
+        "url": "https://api.github.com/repos/vitorhugo-java/distributed-gateway-order-system"
       },
       "payload": {
-        "ref": "master",
-        "ref_type": "branch",
-        "full_ref": "refs/heads/master",
-        "master_branch": "master",
-        "description": null,
-        "pusher_type": "user"
+        "repository_id": 1222985462,
+        "push_id": 33466708335,
+        "ref": "refs/heads/main",
+        "head": "36cd4ea7923c808449ba519bd9fe7b8fdfe484b2",
+        "before": "1123e69df4eebb648cfefe85e98460f984825248"
       },
       "public": true,
-      "created_at": "2026-04-26T03:37:43Z"
+      "created_at": "2026-04-29T00:21:59Z"
+    },
+    {
+      "id": "11175128370",
+      "type": "PushEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-java",
+        "display_login": "vitorhugo-java",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-java",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1222985462,
+        "name": "vitorhugo-java/distributed-gateway-order-system",
+        "url": "https://api.github.com/repos/vitorhugo-java/distributed-gateway-order-system"
+      },
+      "payload": {
+        "repository_id": 1222985462,
+        "push_id": 33466697911,
+        "ref": "refs/heads/main",
+        "head": "1123e69df4eebb648cfefe85e98460f984825248",
+        "before": "457fe1a5bff5714fe16c14c04a66967951b72870"
+      },
+      "public": true,
+      "created_at": "2026-04-29T00:21:32Z"
+    },
+    {
+      "id": "11175073141",
+      "type": "PushEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-java",
+        "display_login": "vitorhugo-java",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-java",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1222985462,
+        "name": "vitorhugo-java/distributed-gateway-order-system",
+        "url": "https://api.github.com/repos/vitorhugo-java/distributed-gateway-order-system"
+      },
+      "payload": {
+        "repository_id": 1222985462,
+        "push_id": 33466642857,
+        "ref": "refs/heads/main",
+        "head": "457fe1a5bff5714fe16c14c04a66967951b72870",
+        "before": "df886268afd381090dfffff009a638c5109676fb"
+      },
+      "public": true,
+      "created_at": "2026-04-29T00:19:07Z"
     }
   ],
   "contributions": [
-    {
-      "date": "2025-04-29",
-      "count": 0,
-      "level": 0
-    },
     {
       "date": "2025-04-30",
       "count": 0,
@@ -4402,12 +4462,12 @@
     },
     {
       "date": "2026-04-15",
-      "count": 13,
-      "level": 4
+      "count": 0,
+      "level": 0
     },
     {
       "date": "2026-04-16",
-      "count": 50,
+      "count": 26,
       "level": 4
     },
     {
@@ -4417,7 +4477,7 @@
     },
     {
       "date": "2026-04-18",
-      "count": 43,
+      "count": 44,
       "level": 4
     },
     {
@@ -4467,9 +4527,14 @@
     },
     {
       "date": "2026-04-28",
-      "count": 1,
-      "level": 1
+      "count": 25,
+      "level": 4
+    },
+    {
+      "date": "2026-04-29",
+      "count": 12,
+      "level": 4
     }
   ],
-  "generatedAt": "2026-04-28T01:35:09.949Z"
+  "generatedAt": "2026-04-29T01:35:35.317Z"
 }
