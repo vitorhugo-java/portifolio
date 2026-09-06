@@ -104,7 +104,7 @@
       "deployments_url": "https://api.github.com/repos/vitorhugo-dotnet/vitorhugo-dotnet/deployments",
       "created_at": "2021-02-12T19:28:48Z",
       "updated_at": "2026-08-19T00:22:12Z",
-      "pushed_at": "2026-09-05T02:24:25Z",
+      "pushed_at": "2026-09-06T02:20:28Z",
       "git_url": "git://github.com/vitorhugo-dotnet/vitorhugo-dotnet.git",
       "ssh_url": "git@github.com:vitorhugo-dotnet/vitorhugo-dotnet.git",
       "clone_url": "https://github.com/vitorhugo-dotnet/vitorhugo-dotnet.git",
@@ -217,13 +217,13 @@
       "deployments_url": "https://api.github.com/repos/vitorhugo-dotnet/portifolio/deployments",
       "created_at": "2026-03-23T12:34:58Z",
       "updated_at": "2026-08-18T03:48:49Z",
-      "pushed_at": "2026-09-04T06:33:58Z",
+      "pushed_at": "2026-09-05T06:20:40Z",
       "git_url": "git://github.com/vitorhugo-dotnet/portifolio.git",
       "ssh_url": "git@github.com:vitorhugo-dotnet/portifolio.git",
       "clone_url": "https://github.com/vitorhugo-dotnet/portifolio.git",
       "svn_url": "https://github.com/vitorhugo-dotnet/portifolio",
       "homepage": "http://hugodotnet.dev/",
-      "size": 824,
+      "size": 825,
       "stargazers_count": 0,
       "watchers_count": 0,
       "language": "TypeScript",
@@ -2584,6 +2584,134 @@
   ],
   "events": [
     {
+      "id": "20141384947",
+      "type": "PushEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-dotnet",
+        "display_login": "vitorhugo-dotnet",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-dotnet",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1209541142,
+        "name": "vitorhugo-dotnet/React-JobApplyTracker",
+        "url": "https://api.github.com/repos/vitorhugo-dotnet/React-JobApplyTracker"
+      },
+      "payload": {
+        "repository_id": 1209541142,
+        "push_id": 42424538004,
+        "ref": "refs/heads/main",
+        "head": "1159d31ea8ed7f820e0a927ff0acd69227ea0b53",
+        "before": "5c98189acb5a9cd01847b2d25aa84e715d00968e"
+      },
+      "public": true,
+      "created_at": "2026-09-03T11:23:04Z"
+    },
+    {
+      "id": "20116724125",
+      "type": "DeleteEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-dotnet",
+        "display_login": "vitorhugo-dotnet",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-dotnet",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1209541142,
+        "name": "vitorhugo-dotnet/React-JobApplyTracker",
+        "url": "https://api.github.com/repos/vitorhugo-dotnet/React-JobApplyTracker"
+      },
+      "payload": {
+        "ref": "dependabot/npm_and_yarn/vitejs/plugin-react-6.1.0",
+        "ref_type": "branch",
+        "full_ref": "refs/heads/dependabot/npm_and_yarn/vitejs/plugin-react-6.1.0",
+        "pusher_type": "user"
+      },
+      "public": true,
+      "created_at": "2026-09-03T11:22:51Z"
+    },
+    {
+      "id": "20115453690",
+      "type": "PushEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-dotnet",
+        "display_login": "vitorhugo-dotnet",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-dotnet",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1209541142,
+        "name": "vitorhugo-dotnet/React-JobApplyTracker",
+        "url": "https://api.github.com/repos/vitorhugo-dotnet/React-JobApplyTracker"
+      },
+      "payload": {
+        "repository_id": 1209541142,
+        "push_id": 42424505585,
+        "ref": "refs/heads/main",
+        "head": "5c98189acb5a9cd01847b2d25aa84e715d00968e",
+        "before": "67f468e740403c6463413239486d56a4bf073c55"
+      },
+      "public": true,
+      "created_at": "2026-09-03T11:22:48Z"
+    },
+    {
+      "id": "20115409855",
+      "type": "DeleteEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-dotnet",
+        "display_login": "vitorhugo-dotnet",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-dotnet",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1209541142,
+        "name": "vitorhugo-dotnet/React-JobApplyTracker",
+        "url": "https://api.github.com/repos/vitorhugo-dotnet/React-JobApplyTracker"
+      },
+      "payload": {
+        "ref": "dependabot/npm_and_yarn/npm_and_yarn-8839a8980a",
+        "ref_type": "branch",
+        "full_ref": "refs/heads/dependabot/npm_and_yarn/npm_and_yarn-8839a8980a",
+        "pusher_type": "user"
+      },
+      "public": true,
+      "created_at": "2026-09-03T11:22:29Z"
+    },
+    {
+      "id": "20100422787",
+      "type": "PushEvent",
+      "actor": {
+        "id": 65777252,
+        "login": "vitorhugo-dotnet",
+        "display_login": "vitorhugo-dotnet",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/vitorhugo-dotnet",
+        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
+      },
+      "repo": {
+        "id": 1209541142,
+        "name": "vitorhugo-dotnet/React-JobApplyTracker",
+        "url": "https://api.github.com/repos/vitorhugo-dotnet/React-JobApplyTracker"
+      },
+      "payload": {
+        "repository_id": 1209541142,
+        "push_id": 42429254303,
+        "ref": "refs/heads/main",
+        "head": "5da6193a4203edbbb7d8c9a67ad0b159c65ca1a6",
+        "before": "46449bd2ff75f63e7a7f2a8d351106e733855b4b"
+      },
+      "public": true,
+      "created_at": "2026-09-03T12:01:19Z"
+    },
+    {
       "id": "20094454594",
       "type": "DeleteEvent",
       "actor": {
@@ -2709,143 +2837,9 @@
       },
       "public": true,
       "created_at": "2026-09-03T11:22:27Z"
-    },
-    {
-      "id": "19896449609",
-      "type": "PushEvent",
-      "actor": {
-        "id": 65777252,
-        "login": "vitorhugo-dotnet",
-        "display_login": "vitorhugo-dotnet",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/vitorhugo-dotnet",
-        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
-      },
-      "repo": {
-        "id": 1289979530,
-        "name": "vitorhugo-dotnet/desktop_dotnet_SonicRelay",
-        "url": "https://api.github.com/repos/vitorhugo-dotnet/desktop_dotnet_SonicRelay"
-      },
-      "payload": {
-        "repository_id": 1289979530,
-        "push_id": 42268373793,
-        "ref": "refs/heads/main",
-        "head": "d2a7e282b11ded9f52b804945f822167fde59428",
-        "before": "7a8e3d0ccf737cc629a844a9cc48e274c3bda50c"
-      },
-      "public": true,
-      "created_at": "2026-09-02T11:47:37Z"
-    },
-    {
-      "id": "19872487558",
-      "type": "PushEvent",
-      "actor": {
-        "id": 65777252,
-        "login": "vitorhugo-dotnet",
-        "display_login": "vitorhugo-dotnet",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/vitorhugo-dotnet",
-        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
-      },
-      "repo": {
-        "id": 1354166870,
-        "name": "vitorhugo-dotnet/aspnet-rate-limit-ip",
-        "url": "https://api.github.com/repos/vitorhugo-dotnet/aspnet-rate-limit-ip"
-      },
-      "payload": {
-        "repository_id": 1354166870,
-        "push_id": 42192066432,
-        "ref": "refs/heads/main",
-        "head": "470adff1a0d8b5444b625665d91efc74a1235963",
-        "before": "17495817b310b6312d8994b3a91249d24a150977"
-      },
-      "public": true,
-      "created_at": "2026-09-02T00:58:03Z"
-    },
-    {
-      "id": "19826313419",
-      "type": "DeleteEvent",
-      "actor": {
-        "id": 65777252,
-        "login": "vitorhugo-dotnet",
-        "display_login": "vitorhugo-dotnet",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/vitorhugo-dotnet",
-        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
-      },
-      "repo": {
-        "id": 1218247978,
-        "name": "vitorhugo-dotnet/go-link-shortener",
-        "url": "https://api.github.com/repos/vitorhugo-dotnet/go-link-shortener"
-      },
-      "payload": {
-        "ref": "codex/webmcp-origin-trial",
-        "ref_type": "branch",
-        "full_ref": "refs/heads/codex/webmcp-origin-trial",
-        "pusher_type": "user"
-      },
-      "public": true,
-      "created_at": "2026-09-01T22:10:43Z"
-    },
-    {
-      "id": "19818580351",
-      "type": "PushEvent",
-      "actor": {
-        "id": 65777252,
-        "login": "vitorhugo-dotnet",
-        "display_login": "vitorhugo-dotnet",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/vitorhugo-dotnet",
-        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
-      },
-      "repo": {
-        "id": 1100762110,
-        "name": "vitorhugo-dotnet/navigable-outline-index-widget",
-        "url": "https://api.github.com/repos/vitorhugo-dotnet/navigable-outline-index-widget"
-      },
-      "payload": {
-        "repository_id": 1100762110,
-        "push_id": 42296782327,
-        "ref": "refs/heads/master",
-        "head": "bcd4bbb7609f2d6a0c6ac92d8d7b8d4c0fe59a20",
-        "before": "4602f0e3df0efea4754606f40f81fe9e28a7058d"
-      },
-      "public": true,
-      "created_at": "2026-09-02T15:16:50Z"
-    },
-    {
-      "id": "19800255655",
-      "type": "PushEvent",
-      "actor": {
-        "id": 65777252,
-        "login": "vitorhugo-dotnet",
-        "display_login": "vitorhugo-dotnet",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/vitorhugo-dotnet",
-        "avatar_url": "https://avatars.githubusercontent.com/u/65777252?"
-      },
-      "repo": {
-        "id": 1354166870,
-        "name": "vitorhugo-dotnet/aspnet-rate-limit-ip",
-        "url": "https://api.github.com/repos/vitorhugo-dotnet/aspnet-rate-limit-ip"
-      },
-      "payload": {
-        "repository_id": 1354166870,
-        "push_id": 42192026234,
-        "ref": "refs/heads/main",
-        "head": "17495817b310b6312d8994b3a91249d24a150977",
-        "before": "65b2af22c2391422aa116a94ea8ff10053986189"
-      },
-      "public": true,
-      "created_at": "2026-09-02T00:57:34Z"
     }
   ],
   "contributions": [
-    {
-      "date": "2025-09-06",
-      "count": 0,
-      "level": 0
-    },
     {
       "date": "2025-09-07",
       "count": 0,
@@ -4578,7 +4572,7 @@
     },
     {
       "date": "2026-08-19",
-      "count": 31,
+      "count": 26,
       "level": 4
     },
     {
@@ -4653,8 +4647,8 @@
     },
     {
       "date": "2026-09-03",
-      "count": 5,
-      "level": 2
+      "count": 10,
+      "level": 3
     },
     {
       "date": "2026-09-04",
@@ -4665,7 +4659,12 @@
       "date": "2026-09-05",
       "count": 0,
       "level": 0
+    },
+    {
+      "date": "2026-09-06",
+      "count": 0,
+      "level": 0
     }
   ],
-  "generatedAt": "2026-09-05T05:08:23.016Z"
+  "generatedAt": "2026-09-06T05:22:50.629Z"
 }
